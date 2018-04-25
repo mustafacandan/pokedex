@@ -4,30 +4,38 @@ public class Test {
 
 	}
 
-	public class DoublyLinkedList 
-	{	
+	public class DoublyLinkedList {
 		private Node first;
 		private Node last;
-	}	
+	}
+
 	public DoublyLinkedList( )
 	{
 		first = null;
 		last = null;
 	}
-	public boolean isEmpty()
-	{
+
+	public boolean isEmpty() {
 		return (first == null);
 	}
-	public void insertAtFront(String itemName)
-	{
-		if(isEmpty())
+
+	public void insertAtBack(String itemName) {
+		if (isEmpty())
 			first = last = new Node(itemName, first);
-		else
-		{
+		else {
 			Node a = new Node(itemName);
-			a.setNext(first);
-			first.setPrev(a);
-			first = a;
+			a.setPrev(last);
+			a.setNext(null);
+			last.setNext(a);
+			last = last.getNext();
+		}
+	}
+
+	public void outputList() {
+		Node current = first;
+		while (current != null) {
+			System.out.println(current.getItem());
+			current = current.getNext();
 		}
 	}
 }
