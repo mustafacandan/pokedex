@@ -1,2 +1,0 @@
-# pokedex
-java pokedex project
